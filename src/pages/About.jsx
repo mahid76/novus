@@ -5,7 +5,7 @@ const About = () => {
    
       <div>
       <h1 className=''>
-        hiasdvfadsv
+        About
       </h1>
     </div>
     
