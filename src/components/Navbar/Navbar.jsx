@@ -15,7 +15,7 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="border-b-2 border-b-[#d4af37] bg-black">
+        <header className="border-b-2 border-b-primary bg-black">
             <Container>
                 <nav className="flex items-center justify-between py-3">
                     <Link to="/" className="flex items-center gap-3">
@@ -27,17 +27,19 @@ const Navbar = () => {
                             const isActive = location.pathname === link.href;
                             return (
                                 <li key={link.label}>
+{/* List item with hover effect and active state */}
                                     <Link
                                         to={link.href}
                                         className={
-                                            "group relative inline-block py-1 transition-colors duration-300 " +
-                                            (isActive ? "text-[#d4af37]" : "text-white hover:text-[#d4af37]")
+                                            "group relative font-primary inline-block py-1 transition-colors duration-300 " +
+                                            (isActive ? "text-primary" : "text-white hover:text-primary")
                                         }
                                     >
                                         {link.label}
+{/* hove line */}
                                         <span
                                             className={
-                                                "absolute -bottom-0.5 left-0 h-0.5 w-full origin-center bg-[#d4af37] transition-transform duration-300 ease-out " +
+                                                "absolute -bottom-0.5 left-0 h-0.5 w-full origin-center bg-primary transition-transform duration-300 ease-out " +
                                                 (isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")
                                             }
                                         />
@@ -48,14 +50,15 @@ const Navbar = () => {
                     </ul>
 
                     <div className="hidden items-center gap-5 lg:flex">
-                        <button type="button" aria-label="Cart" className="text-white hover:text-[#d4af37]">
+{/* button cart */}
+                        <button type="button" aria-label="Cart" className="text-white hover:text-primary">
                             <ShoppingCart size={20} strokeWidth={1.75} />
                         </button>
-                        <a href="tel:+8801961727320" className="flex items-center gap-2 text-sm font-medium text-white hover:text-[#d4af37]">
+                        <a href="tel:+8801961727320" className="flex items-center gap-2 text-sm font-medium font-primary text-white hover:text-primary">
                             <Phone size={18} strokeWidth={1.75} />
                             <p>+880 1961-727320</p>
                         </a>
-                        <Link to="/booking" className="rounded-md border border-[#d4af37] bg-[#d4af37] px-5 py-2.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-black hover:text-[#d4af37]">
+                        <Link to="/booking" className="rounded-md border border-primary font-primary bg-primary px-5 py-2.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-black hover:text-primary">
                             Book Consultation
                         </Link>
                     </div>
