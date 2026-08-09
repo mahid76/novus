@@ -6,10 +6,7 @@ import Container from '../Layout/Container'
 const MainRoute = () => {
   return (
     <div>
-     <Container>
-
       <Navbar />
-     </Container>
       <Outlet />
     </div>
   )
