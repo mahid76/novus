@@ -28,14 +28,12 @@ const Banner = () => {
                             Three units · One trusted name
                         </div>
 
-                        <h1 className="mt-6 font-secondary text-[clamp(38px,6vw,74px)] font-semibold leading-[1.04] text-ink">
-                            Precise advice.
-                            <br />
-                            Proper{" "}
-                            <span className="italic text-primary">documentation.</span>
-                            <br />
-                            Every step abroad.
-                        </h1>
+                        <h1 className="mt-6 font-secondary text-[clamp(32px,6vw,74px)] font-semibold leading-[1.08] text-ink">
+							<span className="block">Precise advice.</span>
+							<span className="block">Proper</span>
+							<span className="block italic text-primary">documentation.</span>
+							<span className="block">Every step abroad.</span>
+						</h1>
 
                         <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink-dim sm:text-base">
                             Novus Group brings together financial documentation, tax &amp;
@@ -74,10 +72,10 @@ const Banner = () => {
                     </div>
 
                     {/* Right column — info card */}
-                    <div className="rounded-md border border-hairline bg-surface p-10">
-                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-primary/50">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary">
-                                <Check size={16} strokeWidth={2.5} className="text-primary" />
+                    <div className="rounded-sm border border-primary/25 bg-surface p-10 shadow-[0_2px_14px_rgba(20,18,12,0.05)]">
+                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-primary/40">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/70">
+                                <Check size={14} strokeWidth={2} className="text-primary" />
                             </div>
                         </div>
 
@@ -88,14 +86,14 @@ const Banner = () => {
                             What every engagement includes
                         </p>
 
-                        <ul className="mt-8 divide-y divide-hairline border-t border-hairline">
+                        <ul className="mt-8 divide-y divide-hairline border-y border-hairline">
                             {includes.map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-center justify-between py-4 text-sm text-primary"
+                                    className="flex items-center justify-between py-4 text-sm text-ink"
                                 >
                                     <span>{item}</span>
-                                    <Check size={16} strokeWidth={2.5} />
+                                    <span className="font-tertiary text-primary/80">✓</span>
                                 </li>
                             ))}
                         </ul>
