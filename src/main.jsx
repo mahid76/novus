@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import Services from "./pages/Services"
 import Contact from "./pages/Contact"
 import About from "./pages/About";
+import NovusAdvisoryFirm from "./components/NovuAdvisoryFirm/NovusAdvisoryFirm";
+import NovusTax from "./components/NovusTax/NovusTax";
+import NovusOverseas from "./components/NovusOverseas/NovusOverseas";
 
 const router = createBrowserRouter([
 	{
@@ -18,6 +21,9 @@ const router = createBrowserRouter([
 			{ path: "about", Component: About },
 			{ path: "services", Component: Services },
 			{ path: "contact", Component: Contact },
+			{ path: "NovusAdvisoryFirm", Component: NovusAdvisoryFirm },
+			{ path: "NovusTax", Component: NovusTax },
+			{ path: "NovusOverseas", Component: NovusOverseas },
 		],
 	},
 ]);

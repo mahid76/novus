@@ -112,9 +112,8 @@ const ConfirmationModal = ({ status, onClose }) => {
                 </button>
 
                 <div
-                    className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full border ${
-                        isSuccess ? "border-primary/50" : "border-red-400/50"
-                    }`}
+                    className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full border ${isSuccess ? "border-primary/50" : "border-red-400/50"
+                        }`}
                 >
                     {isSuccess ? (
                         <CheckCircle2 size={26} strokeWidth={1.8} className="text-primary" />
@@ -226,9 +225,8 @@ const Contact = () => {
                 <Container>
                     <div
                         ref={headRef}
-                        className={`transition-all duration-700 ease-out ${
-                            headVisible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-                        }`}
+                        className={`transition-all duration-700 ease-out ${headVisible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+                            }`}
                     >
                         <div className="font-tertiary text-[11px] uppercase tracking-[0.08em] text-muted">
                             <Link to="/" className="transition-colors hover:text-primary">
@@ -255,9 +253,8 @@ const Contact = () => {
                 <Container>
                     <div
                         ref={formRef}
-                        className={`grid grid-cols-1 gap-12 transition-all duration-700 ease-out lg:grid-cols-2 lg:gap-[60px] ${
-                            formVisible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
-                        }`}
+                        className={`grid grid-cols-1 gap-12 transition-all duration-700 ease-out lg:grid-cols-2 lg:gap-[60px] ${formVisible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+                            }`}
                     >
                         {/* Left: form */}
                         <form onSubmit={handleSubmit}>
