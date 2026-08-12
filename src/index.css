@@ -19,7 +19,7 @@
 /* DEFAULT = dark (no attribute needed on first load) */
 :root, [data-theme="dark"] {
   --bg:#15130d;       
-  --surface-2:#2c2619; 
+  --surface-2:#1c1811;
   --ink:#f2ede0; --ink-dim:#c7c0a9; --muted:#938c74; --hair:rgba(244,239,226,.15);
 }
 

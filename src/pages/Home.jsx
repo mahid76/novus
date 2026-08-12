@@ -5,9 +5,7 @@ import Container from '../components/Layout/Container'
 const Home = () => {
   return (
     <div>
-      <Container>
         <Banner />
-      </Container>
     </div>
   )
 }
