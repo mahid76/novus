@@ -1,7 +1,7 @@
 import { ChevronDown, Moon, Phone, ShoppingCart, Sun } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-import logo from "../../assets/logo.jpeg";
+import logo from "../../assets/logo.jpg";
 import { useTheme } from "../../context/ThemeContext";
 import Container from "../Layout/Container";
 
@@ -80,7 +80,7 @@ const Navbar = () => {
                         onClick={closeMenu}
                     >
                         <img
-                            className="max-w-15 transition-transform duration-400 ease-out group-hover:scale-105"
+                            className="max-w-30 transition-transform duration-400 ease-out group-hover:scale-105"
                             src={logo}
                             alt=""
                         />
