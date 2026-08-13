@@ -37,6 +37,12 @@ const Navbar = () => {
             subtitle: "Study Abroad · Visa · Travel",
             href: "/NovusOverseas",
         },
+        {
+            initials: "OS",
+            title: "Novus Translation Centre",
+            subtitle: "Study Abroad · Visa · Travel",
+            href: "/NovusTranslationCentre",
+        },
     ];
 
     const closeMenu = () => setIsOpen(false);
