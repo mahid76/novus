@@ -23,19 +23,19 @@ const Navbar = () => {
             initials: "CA",
             title: "Novus Advisory Firm",
             subtitle: "Valuation · Tax · Documentation",
-            href: "/services/advisory",
+            href: "/NovusAdvisoryFirm",
         },
         {
             initials: "TX",
             title: "Novus Tax",
             subtitle: "Tax · VAT · RJSC · Audit",
-            href: "/services/tax",
+            href: "/NovusTax",
         },
         {
             initials: "OS",
             title: "Novus Overseas",
             subtitle: "Study Abroad · Visa · Travel",
-            href: "/services/overseas",
+            href: "/NovusOverseas",
         },
     ];
 
@@ -160,8 +160,6 @@ const Navbar = () => {
                             >
                                 <button
                                     type="button"
-                                    onClick={() => setServicesOpen((prev) => !prev)}
-                                    aria-expanded={servicesOpen}
                                     className="cursor-pointer"
                                 >
                                     Services
