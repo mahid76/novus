@@ -11,6 +11,7 @@ import About from "./pages/About";
 import NovusAdvisoryFirm from "./components/NovuAdvisoryFirm/NovusAdvisoryFirm";
 import NovusTax from "./components/NovusTax/NovusTax";
 import NovusOverseas from "./components/NovusOverseas/NovusOverseas";
+import NovusTranslationCentre from "./components/NovusTranslationCentre/NovusTranslationCentre";
 
 const router = createBrowserRouter([
 	{
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
 			{ path: "NovusAdvisoryFirm", Component: NovusAdvisoryFirm },
 			{ path: "NovusTax", Component: NovusTax },
 			{ path: "NovusOverseas", Component: NovusOverseas },
+			{ path: "NovusTranslationCentre", Component: NovusTranslationCentre },
 		],
 	},
 ]);
