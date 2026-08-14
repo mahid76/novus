@@ -25,6 +25,13 @@ const divisions = [
     tags: ["Study Abroad", "Visa", "Travel"],
     path: "/NovusOverseas",
   },
+  {
+    tag: "DIVISION 04",
+    title: "Novus Translation Centre",
+    desc: "Certified, legal, academic and business translation — Bangla–English and English–Bangla — plus notarization, attestation and interpretation support.",
+    tags: ["Certified Translation", "Legal", "Notarized"],
+    path: "/NovusTranslationCentre",
+  },
 ];
 
 const Divisions = () => {
@@ -45,7 +52,7 @@ const Divisions = () => {
             The Group
           </div>
           <h2 className="font-secondary font-semibold text-ink text-[clamp(28px,4vw,44px)] leading-[1.12] mt-3">
-            Three divisions, purpose-built for different needs
+            Four divisions, purpose-built for different needs
           </h2>
           <p className="text-ink-dim mt-4 leading-relaxed">
             Choose the division that matches what you need — or let us guide
@@ -53,7 +60,7 @@ const Divisions = () => {
           </p>
         </div>
 
-        <div ref={gridRef} className="grid gap-6 md:grid-cols-3">
+        <div ref={gridRef} className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {divisions.map((d, i) => (
             <div
               key={d.title}

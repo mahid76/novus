@@ -38,9 +38,9 @@ const Navbar = () => {
             href: "/NovusOverseas",
         },
         {
-            initials: "OS",
+            initials: "TC",
             title: "Novus Translation Centre",
-            subtitle: "Study Abroad · Visa · Travel",
+            subtitle: "Certified · Legal · Academic",
             href: "/NovusTranslationCentre",
         },
     ];

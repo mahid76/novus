@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import UnitServicesPage from "../Services/UnitServicesPage";
 
 const NovusAdvisoryFirm = () => {
-  return (
-    <div>NovusAdvisoryFirm</div>
-  )
-}
+  return <UnitServicesPage unitKey="advisory-firm" />;
+};
 
-export default NovusAdvisoryFirm
+export default NovusAdvisoryFirm;
