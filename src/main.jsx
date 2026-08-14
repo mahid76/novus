@@ -12,6 +12,10 @@ import NovusAdvisoryFirm from "./components/NovuAdvisoryFirm/NovusAdvisoryFirm";
 import NovusTax from "./components/NovusTax/NovusTax";
 import NovusOverseas from "./components/NovusOverseas/NovusOverseas";
 import NovusTranslationCentre from "./components/NovusTranslationCentre/NovusTranslationCentre";
+import AdvisoryFirmPackages from "./pages/Packages/AdvisoryFirmPackages";
+import TaxPackages from "./pages/Packages/TaxPackages";
+import OverseasPackages from "./pages/Packages/OverseasPackages";
+import TranslationCentrePackages from "./pages/Packages/TranslationCentrePackages";
 
 const router = createBrowserRouter([
 	{
@@ -23,9 +27,13 @@ const router = createBrowserRouter([
 			{ path: "services", Component: Services },
 			{ path: "contact", Component: Contact },
 			{ path: "NovusAdvisoryFirm", Component: NovusAdvisoryFirm },
+			{ path: "NovusAdvisoryFirm/packages", Component: AdvisoryFirmPackages },
 			{ path: "NovusTax", Component: NovusTax },
+			{ path: "NovusTax/packages", Component: TaxPackages },
 			{ path: "NovusOverseas", Component: NovusOverseas },
+			{ path: "NovusOverseas/packages", Component: OverseasPackages },
 			{ path: "NovusTranslationCentre", Component: NovusTranslationCentre },
+			{ path: "NovusTranslationCentre/packages", Component: TranslationCentrePackages },
 		],
 	},
 ]);

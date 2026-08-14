@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import UnitServicesPage from "../Services/UnitServicesPage";
 
 const NovusOverseas = () => {
-  return (
-    <div>NovusOverseas</div>
-  )
-}
+  return <UnitServicesPage unitKey="overseas" />;
+};
 
-export default NovusOverseas
+export default NovusOverseas;
