@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import UnitServicesPage from "../Services/UnitServicesPage";
 
 const NovusTax = () => {
-  return (
-    <div>NovusTax</div>
-  )
-}
+  return <UnitServicesPage unitKey="tax" />;
+};
 
-export default NovusTax
+export default NovusTax;
