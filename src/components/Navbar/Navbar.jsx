@@ -286,7 +286,7 @@ const Navbar = () => {
                                 strokeWidth={1.75}
                                 className="transition-transform duration-400 group-hover:rotate-12"
                             />
-                            <p>+880 1961-727320</p>
+                            <p>+880 1601-117737</p>
                         </a>
                         <Link
                             to="/booking"
@@ -507,7 +507,7 @@ const Navbar = () => {
                                 className="flex items-center gap-2 px-2 text-sm font-medium font-primary text-[#c3bdac] transition-colors duration-400 hover:text-white"
                             >
                                 <Phone size={18} strokeWidth={1.75} />
-                                <p>+880 1961-727320</p>
+                                <p>+880 1601-117737</p>
                             </a>
                             <Link
                                 to="/booking"
