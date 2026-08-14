@@ -7,6 +7,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
 import Services from "./pages/Services"
 import Contact from "./pages/Contact"
+import Booking from "./pages/Booking"
 import About from "./pages/About";
 import NovusAdvisoryFirm from "./components/NovuAdvisoryFirm/NovusAdvisoryFirm";
 import NovusTax from "./components/NovusTax/NovusTax";
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
 			{ path: "about", Component: About },
 			{ path: "services", Component: Services },
 			{ path: "contact", Component: Contact },
+			{ path: "booking", Component: Booking },
 			{ path: "NovusAdvisoryFirm", Component: NovusAdvisoryFirm },
 			{ path: "NovusAdvisoryFirm/packages", Component: AdvisoryFirmPackages },
 			{ path: "NovusTax", Component: NovusTax },
