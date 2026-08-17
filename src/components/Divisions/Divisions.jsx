@@ -2,11 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router";
 import Container from "../Layout/Container";
 import { useReveal } from "../../hooks/useReveal";
+import advisoryLogo from "../../assets/logos/novus-advisory-logo.jpeg";
+import taxLogo from "../../assets/logos/novus-tax-logo.jpeg";
+import overseasLogo from "../../assets/logos/novus-overseas-logo.jpeg";
+import translationLogo from "../../assets/logos/novus-translation-logo.svg";
 
 const divisions = [
   {
     tag: "DIVISION 01",
     title: "Novus Advisory Firm",
+    logo: advisoryLogo,
     desc: "Asset valuation, tax filing, net worth certification, fund explanation, audit, notary and translation — professional financial documentation for banking, immigration and official use.",
     tags: ["Valuation", "Net Worth", "Notary"],
     path: "/NovusAdvisoryFirm",
@@ -14,6 +19,7 @@ const divisions = [
   {
     tag: "DIVISION 02",
     title: "Novus Tax",
+    logo: taxLogo,
     desc: "Company incorporation, tax & VAT return, RJSC compliance, internal audit, payroll and business valuation — integrated support for businesses and organizations.",
     tags: ["VAT & RJSC", "Audit", "Payroll"],
     path: "/NovusTax",
@@ -21,6 +27,7 @@ const divisions = [
   {
     tag: "DIVISION 03",
     title: "Novus Overseas",
+    logo: overseasLogo,
     desc: "Student visa & study abroad guidance, university selection, VFS & documentation support, air ticketing and tourist visa services for your journey beyond borders.",
     tags: ["Study Abroad", "Visa", "Travel"],
     path: "/NovusOverseas",
@@ -28,6 +35,7 @@ const divisions = [
   {
     tag: "DIVISION 04",
     title: "Novus Translation Centre",
+    logo: translationLogo,
     desc: "Certified, legal, academic and business translation — Bangla–English and English–Bangla — plus notarization, attestation and interpretation support.",
     tags: ["Certified Translation", "Legal", "Notarized"],
     path: "/NovusTranslationCentre",
@@ -73,7 +81,14 @@ const Divisions = () => {
                 gridIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              <span className="font-tertiary text-[11px] tracking-[0.15em] uppercase text-primary">
+              <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-primary/40">
+                <img
+                  src={d.logo}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </span>
+              <span className="mt-4 block font-tertiary text-[11px] tracking-[0.15em] uppercase text-primary">
                 {d.tag}
               </span>
               <h3 className="font-secondary font-semibold text-ink text-[22px] mt-4">

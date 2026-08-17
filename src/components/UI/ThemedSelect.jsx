@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 /* ---------------------------------------------------------
-   Generic themed dropdown — same pattern used on the Contact
-   page's division select. Renders its own list instead of a
-   native <select> so the open menu stays on-theme.
+   Generic themed dropdown used across the site (Contact,
+   Booking, etc). Renders its own list instead of a native
+   <select> so the open menu always matches the active theme
+   (light/dark) instead of falling back to the browser's OS
+   styling. Relies on the bg-surface / bg-surface-2 tokens in
+   index.css - both themes define solid, opaque values for
+   these, so no inline color fallback is needed here.
 
    options: [{ value, label }]
 --------------------------------------------------------- */
@@ -59,7 +63,6 @@ const ThemedSelect = ({ value, onChange, options, disabled, placeholder }) => {
             {open && (
                 <ul
                     role="listbox"
-                    style={{ backgroundColor: "#1c1811" }}
                     className="absolute inset-x-0 top-full z-50 mt-1.5 max-h-64 overflow-y-auto rounded-sm border border-hairline bg-surface shadow-2xl"
                 >
                     {options.map((option) => {
@@ -72,20 +75,11 @@ const ThemedSelect = ({ value, onChange, options, disabled, placeholder }) => {
                                         onChange(option.value);
                                         setOpen(false);
                                     }}
-                                    style={{
-                                        backgroundColor: isSelected
-                                            ? "rgba(212,175,55,0.15)"
-                                            : "#1c1811",
-                                    }}
                                     className={`block w-full px-3.5 py-2.5 text-left text-sm transition-colors ${
-                                        isSelected ? "text-primary" : "text-ink-dim hover:text-ink"
+                                        isSelected
+                                            ? "bg-primary/15 text-primary"
+                                            : "bg-surface text-ink-dim hover:bg-surface-2 hover:text-ink"
                                     }`}
-                                    onMouseEnter={(e) => {
-                                        if (!isSelected) e.currentTarget.style.backgroundColor = "#252017";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!isSelected) e.currentTarget.style.backgroundColor = "#1c1811";
-                                    }}
                                 >
                                     {option.label}
                                 </button>

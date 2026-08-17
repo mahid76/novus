@@ -2,6 +2,10 @@ import { ChevronDown, Moon, Phone, ShoppingCart, Sun } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import logo from "../../assets/logo.jpg";
+import advisoryLogo from "../../assets/logos/novus-advisory-logo.jpeg";
+import taxLogo from "../../assets/logos/novus-tax-logo.jpeg";
+import overseasLogo from "../../assets/logos/novus-overseas-logo.jpeg";
+import translationLogo from "../../assets/logos/novus-translation-logo.svg";
 import { useTheme } from "../../context/ThemeContext";
 import Container from "../Layout/Container";
 
@@ -21,24 +25,28 @@ const Navbar = () => {
     const services = [
         {
             initials: "CA",
+            logo: advisoryLogo,
             title: "Novus Advisory Firm",
             subtitle: "Valuation · Tax · Documentation",
             href: "/NovusAdvisoryFirm",
         },
         {
             initials: "TX",
+            logo: taxLogo,
             title: "Novus Tax",
             subtitle: "Tax · VAT · RJSC · Audit",
             href: "/NovusTax",
         },
         {
             initials: "OS",
+            logo: overseasLogo,
             title: "Novus Overseas",
             subtitle: "Study Abroad · Visa · Travel",
             href: "/NovusOverseas",
         },
         {
             initials: "TC",
+            logo: translationLogo,
             title: "Novus Translation Centre",
             subtitle: "Certified · Legal · Academic",
             href: "/NovusTranslationCentre",
@@ -214,8 +222,12 @@ const Navbar = () => {
                                                     onClick={() => setServicesOpen(false)}
                                                     className="group/item flex items-center gap-4 px-5 py-4 transition-colors duration-200 hover:bg-white/5"
                                                 >
-                                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/60 text-xs font-semibold tracking-wide text-primary transition-transform duration-300 group-hover/item:scale-105">
-                                                        {service.initials}
+                                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-primary/60 transition-transform duration-300 group-hover/item:scale-105">
+                                                        <img
+                                                            src={service.logo}
+                                                            alt=""
+                                                            className="h-full w-full object-cover"
+                                                        />
                                                     </span>
                                                     <span className="flex flex-col">
                                                         <span className="font-primary text-sm font-semibold text-white">
@@ -278,7 +290,7 @@ const Navbar = () => {
                             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
                         </button>
                         <a
-                            href="tel:+8801961727320"
+                            href="tel:+8801601117737"
                             className="flex items-center gap-2 text-sm font-medium font-primary text-[#c3bdac] transition-colors duration-300 hover:text-white"
                         >
                             <Phone
@@ -296,15 +308,16 @@ const Navbar = () => {
                         </Link>
                     </div>
 
-                    {/* Mobile right side: cart + animated hamburger */}
+                    {/* Mobile right side: theme toggle + animated hamburger */}
                     <div className="flex items-center gap-4 lg:hidden">
-                        {/* <button
-							type="button"
-							aria-label="Cart"
-							className="text-white transition-transform duration-300 hover:scale-110 hover:text-primary"
-						>
-							<ShoppingCart size={20} strokeWidth={1.75} />
-						</button> */}
+                        <button
+                            type="button"
+                            onClick={toggle}
+                            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+                            className="text-[#c3bdac] transition-colors hover:text-primary"
+                        >
+                            {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
+                        </button>
                         <button
                             type="button"
                             aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -439,8 +452,12 @@ const Navbar = () => {
                                                         }}
                                                         className="flex items-center gap-3 rounded-md px-3 py-2.5 transition-colors duration-200 hover:bg-white/5"
                                                     >
-                                                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/60 text-[10px] font-semibold text-primary">
-                                                            {service.initials}
+                                                        <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-primary/60">
+                                                            <img
+                                                                src={service.logo}
+                                                                alt=""
+                                                                className="h-full w-full object-cover"
+                                                            />
                                                         </span>
                                                         <span className="flex flex-col">
                                                             <span className="font-primary text-sm font-semibold text-white">
@@ -503,7 +520,7 @@ const Navbar = () => {
                             }}
                         >
                             <a
-                                href="tel:+8801961727320"
+                                href="tel:+8801601117737"
                                 className="flex items-center gap-2 px-2 text-sm font-medium font-primary text-[#c3bdac] transition-colors duration-400 hover:text-white"
                             >
                                 <Phone size={18} strokeWidth={1.75} />

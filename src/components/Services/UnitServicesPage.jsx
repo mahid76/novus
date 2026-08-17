@@ -8,6 +8,7 @@ import ServiceCard from "./ServiceCard";
 const UnitServicesPage = ({ unitKey }) => {
   const unit = getUnit(unitKey);
   const navigate = useNavigate();
+  const [headRef, headIn] = useReveal();
   const [gridRef, gridIn] = useReveal();
 
   if (!unit) return null;
@@ -24,7 +25,12 @@ const UnitServicesPage = ({ unitKey }) => {
           }}
         />
         <Container>
-          <div className="relative">
+          <div
+            ref={headRef}
+            className={`relative motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+              headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+            }`}
+          >
             <div className="font-tertiary text-[11px] tracking-[0.08em] text-muted">
               <Link to="/" className="hover:text-primary">
                 Home
