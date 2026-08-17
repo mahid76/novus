@@ -33,7 +33,7 @@ const divisions = [
             "Documentation-first: every report is built on supporting evidence and applicable valuation principles.",
         serves:
             "Individuals, entrepreneurs, professionals, investors, and organizations needing official documentation.",
-        link: "/services",
+        link: "/NovusAdvisoryFirm",
     },
     {
         icon: Building2,
@@ -44,7 +44,7 @@ const divisions = [
         focus:
             "Integrated compliance: tax, VAT, RJSC and audit handled through one professional platform.",
         serves: "Companies, entrepreneurs, NGOs and other organizations across Bangladesh.",
-        link: "/services",
+        link: "/NovusTax",
     },
     {
         icon: Globe2,
@@ -54,7 +54,7 @@ const divisions = [
             "Overseas education, visa consultancy and travel support — from university selection to visa documentation, VFS submission and air ticketing.",
         focus: "Personalised, transparent guidance from application to departure and travel.",
         serves: "Students, visa applicants, and travelers planning international journeys.",
-        link: "/services",
+        link: "/NovusOverseas",
     },
     {
         icon: Languages,
@@ -64,7 +64,7 @@ const divisions = [
             "Certified, legal, academic and business translation — Bangla–English and English–Bangla — plus notarization, attestation and interpretation support.",
         focus: "Accuracy and confidentiality on every document, certified for official use.",
         serves: "Individuals, students and businesses needing certified or notarized translation.",
-        link: "/services",
+        link: "/NovusTranslationCentre",
     },
 ];
 
