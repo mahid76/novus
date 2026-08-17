@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import emailjs from "@emailjs/browser";
 import {
     AlertCircle,
     CheckCircle2,
-    ChevronDown,
     Clock,
     Mail,
     MapPin,
@@ -14,6 +13,8 @@ import {
     X,
 } from "lucide-react";
 import Container from "../components/Layout/Container";
+import ThemedSelect from "../components/UI/ThemedSelect";
+import { useReveal } from "../hooks/useReveal";
 
 const WHATSAPP_NUMBER = "8801601117737"; // international format, no "+" or leading zeros
 
@@ -35,137 +36,15 @@ const EMAILJS_TEMPLATE_ID_ADMIN = "template_d9l52ae";
 const EMAILJS_TEMPLATE_ID_AUTOREPLY = "template_6wb5l4x";
 const EMAILJS_PUBLIC_KEY = "PN1zpgC0bKg7daZQF";
 
-/* ---------------------------------------------------------
-   Lightweight scroll-reveal hook (mirrors the HTML demo's
-   .reveal behaviour using IntersectionObserver)
---------------------------------------------------------- */
-const useReveal = () => {
-    const ref = useRef(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.unobserve(node);
-                }
-            },
-            { threshold: 0.15 }
-        );
-        observer.observe(node);
-        return () => observer.disconnect();
-    }, []);
-
-    return [ref, visible];
-};
-
-const DIVISIONS = ["Novus Advisory Firm", "Novus Tax", "Novus Overseas","Novus Translation Center", "Not sure yet"];
-
-/* ---------------------------------------------------------
-   Custom themed dropdown — replaces the native <select> so
-   the open menu matches the dark theme instead of falling
-   back to the browser's OS-styled list (white bg, blue hi-
-   light). Fully keyboard + click-outside accessible.
---------------------------------------------------------- */
-const DivisionSelect = ({ value, onChange, disabled, options }) => {
-    const [open, setOpen] = useState(false);
-    const wrapRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (wrapRef.current && !wrapRef.current.contains(e.target)) {
-                setOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
-
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setOpen((o) => !o);
-        } else if (e.key === "Escape") {
-            setOpen(false);
-        }
-    };
-
-    return (
-        <div ref={wrapRef} className="relative">
-            <button
-                type="button"
-                disabled={disabled}
-                onClick={() => setOpen((o) => !o)}
-                onKeyDown={handleKeyDown}
-                aria-haspopup="listbox"
-                aria-expanded={open}
-                className={`flex w-full items-center justify-between rounded-sm border bg-surface px-3.5 py-3 text-left text-sm text-ink outline-none transition-colors disabled:opacity-60 ${
-                    open ? "border-primary" : "border-hairline"
-                }`}
-            >
-                <span>{value}</span>
-                <ChevronDown
-                    size={16}
-                    strokeWidth={2}
-                    className={`shrink-0 text-muted transition-transform duration-200 ${
-                        open ? "rotate-180 text-primary" : ""
-                    }`}
-                />
-            </button>
-
-            {open && (
-                <ul
-                    role="listbox"
-                    style={{ backgroundColor: "#1c1811" }}
-                    className="absolute inset-x-0 top-full z-50 mt-1.5 overflow-hidden rounded-sm border border-hairline bg-surface shadow-2xl"
-                >
-                    {options.map((option) => {
-                        const isSelected = option === value;
-                        return (
-                            <li key={option} role="option" aria-selected={isSelected}>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        onChange(option);
-                                        setOpen(false);
-                                    }}
-                                    style={{
-                                        backgroundColor: isSelected
-                                            ? "rgba(212,175,55,0.15)"
-                                            : "#1c1811",
-                                    }}
-                                    className={`block w-full px-3.5 py-2.5 text-left text-sm transition-colors ${
-                                        isSelected
-                                            ? "text-primary"
-                                            : "text-ink-dim hover:text-ink"
-                                    }`}
-                                    onMouseEnter={(e) => {
-                                        if (!isSelected) e.currentTarget.style.backgroundColor = "#252017";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!isSelected) e.currentTarget.style.backgroundColor = "#1c1811";
-                                    }}
-                                >
-                                    {option}
-                                </button>
-                            </li>
-                        );
-                    })}
-                </ul>
-            )}
-        </div>
-    );
-};
+const DIVISIONS = ["Novus Advisory Firm", "Novus Tax", "Novus Overseas", "Novus Translation Centre", "Not sure yet"];
+const DIVISION_OPTIONS = DIVISIONS.map((d) => ({ value: d, label: d }));
 
 const infoRows = [
     {
         icon: Phone,
         label: "Call us",
         content: "+880 1601-117737",
-        href: "tel:+8801601117737   ",
+        href: "tel:+8801601117737",
     },
     {
         icon: Mail,
@@ -391,13 +270,13 @@ const Contact = () => {
                                 <label className="mb-2 block font-tertiary text-xs uppercase tracking-[0.06em] text-muted">
                                     Which division is this about?
                                 </label>
-                                <DivisionSelect
+                                <ThemedSelect
                                     value={form.division}
                                     onChange={(value) =>
                                         setForm((f) => ({ ...f, division: value }))
                                     }
                                     disabled={status === "sending"}
-                                    options={DIVISIONS}
+                                    options={DIVISION_OPTIONS}
                                 />
                             </div>
 

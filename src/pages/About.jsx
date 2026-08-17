@@ -1,34 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Link } from "react-router";
-import { Award, Building2, FileCheck2, Globe2 } from "lucide-react";
+import { Award, Building2, FileCheck2, Globe2, Languages } from "lucide-react";
 import Container from "../components/Layout/Container";
-
-/* ---------------------------------------------------------
-   Lightweight scroll-reveal hook (mirrors the HTML demo's
-   .reveal / .reveal-stagger behaviour using IntersectionObserver)
---------------------------------------------------------- */
-const useReveal = () => {
-    const ref = useRef(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const node = ref.current;
-        if (!node) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.unobserve(node);
-                }
-            },
-            { threshold: 0.15 }
-        );
-        observer.observe(node);
-        return () => observer.disconnect();
-    }, []);
-
-    return [ref, visible];
-};
+import { useReveal } from "../hooks/useReveal";
 
 const pillars = [
     {
@@ -39,7 +13,7 @@ const pillars = [
     {
         tag: "VISION",
         title: "A trusted name in Bangladesh",
-        text: "To be recognised for professional integrity, technical expertise, and consistent client satisfaction across all three divisions.",
+        text: "To be recognised for professional integrity, technical expertise, and consistent client satisfaction across all four divisions.",
     },
     {
         tag: "COMMITMENT",
@@ -80,6 +54,16 @@ const divisions = [
             "Overseas education, visa consultancy and travel support — from university selection to visa documentation, VFS submission and air ticketing.",
         focus: "Personalised, transparent guidance from application to departure and travel.",
         serves: "Students, visa applicants, and travelers planning international journeys.",
+        link: "/services",
+    },
+    {
+        icon: Languages,
+        eyebrow: "Division 04",
+        name: "Novus Translation Centre",
+        blurb:
+            "Certified, legal, academic and business translation — Bangla–English and English–Bangla — plus notarization, attestation and interpretation support.",
+        focus: "Accuracy and confidentiality on every document, certified for official use.",
+        serves: "Individuals, students and businesses needing certified or notarized translation.",
         link: "/services",
     },
 ];
@@ -189,10 +173,11 @@ const About = () => {
 
                         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-dim sm:text-base">
                             Novus Group is a Bangladesh-based professional group operating
-                            through three specialised divisions — Novus Advisory Firm, Novus
-                            Tax, and Novus Overseas — each focused on a distinct area of
-                            financial, regulatory, and overseas-consultancy expertise, unified
-                            by one standard of professionalism.
+                            through four specialised divisions — Novus Advisory Firm, Novus
+                            Tax, Novus Overseas, and Novus Translation Centre — each focused
+                            on a distinct area of financial, regulatory, overseas-consultancy
+                            and translation expertise, unified by one standard of
+                            professionalism.
                         </p>
                     </div>
                 </Container>
@@ -242,13 +227,13 @@ const About = () => {
                         <div>
                             <div className="flex items-center gap-2.5 font-tertiary text-[11px] uppercase tracking-[0.22em] text-primary">
                                 <Award size={14} strokeWidth={2} />
-                                One name, three units
+                                One name, four units
                             </div>
                             <h3 className="mt-3 font-secondary text-xl font-semibold text-ink sm:text-2xl">
                                 Speak with the right division for your need.
                             </h3>
                         </div>
-                        <Link to="/contact" className="shrink-0">
+                        <Link to="/booking" className="shrink-0">
                             <button className="rounded-sm border border-primary bg-primary px-6 py-3 text-sm font-semibold text-black transition-colors duration-300 hover:bg-transparent hover:text-primary">
                                 Book a Consultation
                             </button>
