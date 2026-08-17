@@ -1,0 +1,25 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="500" fill="#000000"/>
+
+  <g transform="translate(250,150)">
+    <circle cx="0" cy="0" r="62" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+    <ellipse cx="0" cy="0" rx="62" ry="26" fill="none" stroke="#d4af37" stroke-width="1.4" opacity="0.85"/>
+    <ellipse cx="0" cy="0" rx="26" ry="62" fill="none" stroke="#d4af37" stroke-width="1.4" opacity="0.85"/>
+    <line x1="-62" y1="0" x2="62" y2="0" stroke="#d4af37" stroke-width="1.4" opacity="0.85"/>
+    <line x1="0" y1="-62" x2="0" y2="62" stroke="#d4af37" stroke-width="1.4" opacity="0.85"/>
+
+    <g fill="none" stroke="#f2c14e" stroke-width="4.5" stroke-linecap="round">
+      <path d="M -34 -6 A 34 34 0 0 1 30 -26"/>
+      <polygon points="30,-26 16,-32 22,-16" fill="#f2c14e" stroke="none"/>
+      <path d="M 34 6 A 34 34 0 0 1 -30 26"/>
+      <polygon points="-30,26 -16,32 -22,16" fill="#f2c14e" stroke="none"/>
+    </g>
+
+    <text x="-22" y="7" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#ffffff" font-weight="700">EN</text>
+    <text x="22" y="7" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#ffffff" font-weight="700">BN</text>
+  </g>
+
+  <text x="250" y="290" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#ffffff" font-weight="700" letter-spacing="4">NOVUS</text>
+
+  <text x="250" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#d4af37" letter-spacing="4" font-weight="600">TRANSLATION CENTRE</text>
+</svg>

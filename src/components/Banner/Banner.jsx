@@ -11,7 +11,7 @@ const includes = [
 ];
 
 const stats = [
-    { value: 3, suffix: "", label: "Advisory Units" },
+    { value: 4, suffix: "", label: "Advisory Units" },
     { value: 20, suffix: "+", label: "Services Offered" },
     { value: null, display: "BD", label: "Serving Nationwide" },
 ];
@@ -140,7 +140,7 @@ const Banner = () => {
                                 className="h-px w-6 origin-left bg-primary [animation:novus-draw_600ms_ease-out_1_both]"
                                 style={{ animationDelay: "150ms" }}
                             />
-                            Three units · One trusted name
+                            Four units · One trusted name
                         </Reveal>
 
                         <h1 className="mt-6 font-secondary text-[clamp(32px,6vw,74px)] font-semibold leading-[1.08] text-ink">

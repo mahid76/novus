@@ -1,14 +1,64 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import Container from "../Layout/Container";
+import { useReveal } from "../../hooks/useReveal";
 import { getUnit, getPackagesForService } from "../../data/servicesData";
 import PackageCard from "./PackageCard";
+
+/* One package section — its own component so useReveal (a hook)
+   can be called once per instance instead of inside a .map() loop,
+   matching the pattern used for division blocks on the About page. */
+const PackageSection = ({ unitKey, service, sectionRefs }) => {
+  const pkgs = getPackagesForService(unitKey, service.title);
+  const [ref, inView] = useReveal();
+
+  return (
+    <div
+      id={`pkg-${service.id}`}
+      data-service-id={service.id}
+      ref={(el) => {
+        sectionRefs.current[service.id] = el;
+      }}
+      className="scroll-mt-24 border-b border-hairline py-16 sm:py-[70px]"
+    >
+      <Container>
+        <div
+          ref={ref}
+          className={`motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+          }`}
+        >
+          <div className="flex flex-wrap items-baseline justify-between gap-5">
+            <div>
+              <div className="font-tertiary text-[11px] tracking-[0.22em] uppercase text-primary">
+                {service.icon} Service
+              </div>
+              <h2 className="mt-2.5 font-secondary text-[clamp(24px,3vw,34px)] font-semibold text-ink">
+                {service.title}
+              </h2>
+            </div>
+            <div className="font-tertiary text-[11.5px] text-muted">
+              {pkgs.length} PACKAGES
+            </div>
+          </div>
+
+          <div className="mt-9 grid gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+            {pkgs.map((pkg) => (
+              <PackageCard key={pkg.name} pkg={pkg} />
+            ))}
+          </div>
+        </div>
+      </Container>
+    </div>
+  );
+};
 
 const UnitPackagesPage = ({ unitKey }) => {
   const unit = getUnit(unitKey);
   const location = useLocation();
   const [activeId, setActiveId] = useState(unit?.services?.[0]?.id ?? "");
   const sectionRefs = useRef({});
+  const [headRef, headIn] = useReveal();
 
   // Deep-link: if arriving with #service-id (from the Services page cards),
   // scroll to it once on mount.
@@ -68,7 +118,12 @@ const UnitPackagesPage = ({ unitKey }) => {
           }}
         />
         <Container>
-          <div className="relative">
+          <div
+            ref={headRef}
+            className={`relative motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+              headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+            }`}
+          >
             <div className="font-tertiary text-[11px] tracking-[0.08em] text-muted">
               <Link to="/" className="hover:text-primary">
                 Home
@@ -109,40 +164,14 @@ const UnitPackagesPage = ({ unitKey }) => {
 
       {/* Package sections, one per service */}
       <div>
-        {unit.services.map((service) => {
-          const pkgs = getPackagesForService(unitKey, service.title);
-          return (
-            <div
-              key={service.id}
-              id={`pkg-${service.id}`}
-              data-service-id={service.id}
-              ref={(el) => (sectionRefs.current[service.id] = el)}
-              className="scroll-mt-24 border-b border-hairline py-16 sm:py-[70px]"
-            >
-              <Container>
-                <div className="flex flex-wrap items-baseline justify-between gap-5">
-                  <div>
-                    <div className="font-tertiary text-[11px] tracking-[0.22em] uppercase text-primary">
-                      {service.icon} Service
-                    </div>
-                    <h2 className="mt-2.5 font-secondary text-[clamp(24px,3vw,34px)] font-semibold text-ink">
-                      {service.title}
-                    </h2>
-                  </div>
-                  <div className="font-tertiary text-[11.5px] text-muted">
-                    {pkgs.length} PACKAGES
-                  </div>
-                </div>
-
-                <div className="mt-9 grid gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
-                  {pkgs.map((pkg) => (
-                    <PackageCard key={pkg.name} pkg={pkg} />
-                  ))}
-                </div>
-              </Container>
-            </div>
-          );
-        })}
+        {unit.services.map((service) => (
+          <PackageSection
+            key={service.id}
+            unitKey={unitKey}
+            service={service}
+            sectionRefs={sectionRefs}
+          />
+        ))}
       </div>
     </div>
   );

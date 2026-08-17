@@ -34,6 +34,16 @@ const footerColumns = [
       "Tourist Visa",
     ],
   },
+  {
+    title: "Novus Translation Centre",
+    path: "/NovusTranslationCentre",
+    links: [
+      "Certified Translation",
+      "Legal Translation",
+      "Academic Translation",
+      "Notarized Translation",
+    ],
+  },
 ];
 
 const Footer = () => {
@@ -48,7 +58,7 @@ const Footer = () => {
       }`}
     >
       <Container>
-        <div className="grid gap-10 grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 grid-cols-2 md:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-full border border-primary/40 flex items-center justify-center font-secondary font-bold text-primary text-[15px]">
@@ -63,7 +73,7 @@ const Footer = () => {
             </Link>
             <p className="text-ink-dim text-[13.5px] leading-relaxed mt-4 max-w-[280px]">
               Professional Advisory · Trusted Documentation · Reliable
-              Solutions. Three divisions, one standard of professionalism.
+              Solutions. Four divisions, one standard of professionalism.
             </p>
           </div>
 
@@ -87,7 +97,7 @@ const Footer = () => {
 
         <div className="flex flex-wrap items-center justify-between gap-3 mt-12 pt-6 border-t border-hairline text-muted text-[12px]">
           <span>© {year} Novus Group. All rights reserved.</span>
-          <span>Dhaka, Bangladesh · +880 1961-727320</span>
+          <span>Dhaka, Bangladesh · +880 1601-117737</span>
         </div>
       </Container>
     </footer>
