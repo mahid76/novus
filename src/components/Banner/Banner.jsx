@@ -26,7 +26,7 @@ const Reveal = ({ as: Tag = "div", delay = 0, className = "", children, ...rest 
     return (
         <Tag
             className={
-                `transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ` +
+                `transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ` +
                 (shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0") +
                 " " + className
             }
@@ -240,7 +240,7 @@ const Banner = () => {
                                     as="li"
                                     key={item}
                                     delay={650 + i * 90}
-                                    className="group flex items-center justify-between py-4 text-sm text-ink transition-all duration-300 hover:pl-1 hover:text-primary"
+                                    className="group flex items-center justify-between py-4 text-sm text-ink transition-[padding-left,color] duration-300 hover:pl-1 hover:text-primary"
                                 >
                                     <span>{item}</span>
                                     <span className="font-tertiary text-primary/80 transition-transform duration-300 group-hover:scale-125">
