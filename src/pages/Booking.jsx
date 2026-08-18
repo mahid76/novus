@@ -4,6 +4,7 @@ import Container from "../components/Layout/Container";
 import { useReveal } from "../hooks/useReveal";
 import { servicesData } from "../data/servicesData";
 import ThemedSelect from "../components/UI/ThemedSelect";
+import { useTheme } from "../context/ThemeContext";
 
 // Same number used on the Contact page's WhatsApp button.
 const WHATSAPP_NUMBER = "8801601117737";
@@ -13,10 +14,18 @@ const DIVISION_OPTIONS = Object.entries(servicesData).map(([key, unit]) => ({
     label: unit.title,
 }));
 
-const TIME_OPTIONS = ["10:00 AM", "12:00 PM", "3:00 PM", "5:30 PM"].map((t) => ({
-    value: t,
-    label: t,
-}));
+const TIME_NOTE = "Choose any time that works for you — we'll confirm availability.";
+
+// Converts a 24h "HH:MM" input value into a friendly 12h label
+// for the WhatsApp message (e.g. "14:30" -> "2:30 PM").
+function formatTime12h(value) {
+    if (!value) return "Not specified";
+    const [hStr, mStr] = value.split(":");
+    let h = parseInt(hStr, 10);
+    const period = h >= 12 ? "PM" : "AM";
+    h = h % 12 || 12;
+    return `${h}:${mStr} ${period}`;
+}
 
 const infoRows = [
     {
@@ -37,6 +46,7 @@ const infoRows = [
 ];
 
 const Booking = () => {
+    const { theme } = useTheme();
     const [headRef, headVisible] = useReveal();
     const [formRef, formVisible] = useReveal();
 
@@ -46,7 +56,7 @@ const Booking = () => {
         division: DIVISION_OPTIONS[0].value,
         service: "",
         date: "",
-        time: TIME_OPTIONS[0].value,
+        time: "",
     });
 
     const serviceOptions = useMemo(() => {
@@ -88,7 +98,7 @@ Phone: ${form.phone}
 Division: ${unitTitle}
 Service: ${form.service}
 Preferred Date: ${form.date || "Not specified"}
-Preferred Time: ${form.time}`;
+Preferred Time: ${formatTime12h(form.time)}`;
         const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
             message
         )}`;
@@ -202,7 +212,8 @@ Preferred Time: ${form.time}`;
                                     type="date"
                                     value={form.date}
                                     onChange={(e) => handleChange("date", e.target.value)}
-                                    className="w-full rounded-sm border border-hairline bg-surface px-3.5 py-3 text-sm text-ink outline-none transition-colors focus:border-primary [color-scheme:dark]"
+                                    className="w-full rounded-sm border border-hairline bg-surface px-3.5 py-3 text-sm text-ink outline-none transition-colors focus:border-primary"
+                                    style={{ colorScheme: theme }}
                                 />
                             </div>
 
@@ -210,11 +221,15 @@ Preferred Time: ${form.time}`;
                                 <label className="mb-2 block font-tertiary text-xs uppercase tracking-[0.06em] text-muted">
                                     Preferred Time
                                 </label>
-                                <ThemedSelect
+                                <input
+                                    type="time"
                                     value={form.time}
-                                    onChange={(value) => handleChange("time", value)}
-                                    options={TIME_OPTIONS}
+                                    onChange={(e) => handleChange("time", e.target.value)}
+                                    required
+                                    className="w-full rounded-sm border border-hairline bg-surface px-3.5 py-3 text-sm text-ink outline-none transition-colors focus:border-primary"
+                                    style={{ colorScheme: theme }}
                                 />
+                                <p className="mt-2 text-[12px] text-muted">{TIME_NOTE}</p>
                             </div>
 
                             <button

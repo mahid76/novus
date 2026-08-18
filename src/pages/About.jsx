@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
-import { Award, Building2, FileCheck2, Globe2, Languages } from "lucide-react";
+import { Award } from "lucide-react";
 import Container from "../components/Layout/Container";
 import { useReveal } from "../hooks/useReveal";
+import advisoryLogo from "../assets/logos/novus-advisory-logo.jpeg";
+import taxLogo from "../assets/logos/novus-tax-logo.jpeg";
+import overseasLogo from "../assets/logos/novus-overseas-logo.jpeg";
+import translationLogo from "../assets/logos/novus-translation-logo.svg";
 
 const pillars = [
     {
@@ -24,7 +28,7 @@ const pillars = [
 
 const divisions = [
     {
-        icon: FileCheck2,
+        logo: advisoryLogo,
         eyebrow: "Division 01",
         name: "Novus Advisory Firm",
         blurb:
@@ -33,10 +37,10 @@ const divisions = [
             "Documentation-first: every report is built on supporting evidence and applicable valuation principles.",
         serves:
             "Individuals, entrepreneurs, professionals, investors, and organizations needing official documentation.",
-        link: "/NovusAdvisoryFirm",
+        link: "/services",
     },
     {
-        icon: Building2,
+        logo: taxLogo,
         eyebrow: "Division 02",
         name: "Novus Tax",
         blurb:
@@ -44,27 +48,27 @@ const divisions = [
         focus:
             "Integrated compliance: tax, VAT, RJSC and audit handled through one professional platform.",
         serves: "Companies, entrepreneurs, NGOs and other organizations across Bangladesh.",
-        link: "/NovusTax",
+        link: "/services",
     },
     {
-        icon: Globe2,
+        logo: overseasLogo,
         eyebrow: "Division 03",
         name: "Novus Overseas",
         blurb:
             "Overseas education, visa consultancy and travel support — from university selection to visa documentation, VFS submission and air ticketing.",
         focus: "Personalised, transparent guidance from application to departure and travel.",
         serves: "Students, visa applicants, and travelers planning international journeys.",
-        link: "/NovusOverseas",
+        link: "/services",
     },
     {
-        icon: Languages,
+        logo: translationLogo,
         eyebrow: "Division 04",
         name: "Novus Translation Centre",
         blurb:
             "Certified, legal, academic and business translation — Bangla–English and English–Bangla — plus notarization, attestation and interpretation support.",
         focus: "Accuracy and confidentiality on every document, certified for official use.",
         serves: "Individuals, students and businesses needing certified or notarized translation.",
-        link: "/NovusTranslationCentre",
+        link: "/services",
     },
 ];
 
@@ -79,7 +83,6 @@ const Eyebrow = ({ children }) => (
 /* Single division block — its own component so useReveal (a hook)
    can be called once per instance instead of inside a .map() loop */
 const DivisionBlock = ({ division }) => {
-    const Icon = division.icon;
     const [ref, visible] = useReveal();
 
     return (
@@ -93,8 +96,12 @@ const DivisionBlock = ({ division }) => {
                 >
                     {/* Left: identity */}
                     <div>
-                        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-primary/40">
-                            <Icon size={20} strokeWidth={1.6} className="text-primary" />
+                        <div className="mb-5 flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-primary/40">
+                            <img
+                                src={division.logo}
+                                alt=""
+                                className="h-full w-full object-cover"
+                            />
                         </div>
                         <Eyebrow>{division.eyebrow}</Eyebrow>
                         <h2 className="mt-3 font-secondary text-2xl font-semibold text-ink sm:text-3xl">
