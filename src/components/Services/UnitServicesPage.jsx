@@ -55,20 +55,22 @@ const UnitServicesPage = ({ unitKey }) => {
       {/* Services grid */}
       <section className="py-16 sm:py-20">
         <Container>
-          <div
-            ref={gridRef}
-            className={`grid gap-[22px] motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out sm:grid-cols-2 lg:grid-cols-3 ${
-              gridIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            {unit.services.map((service) => (
-              <ServiceCard
+          <div ref={gridRef} className="grid gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+            {unit.services.map((service, i) => (
+              <div
                 key={service.id}
-                service={service}
-                onClick={() =>
-                  navigate(`${unit.path}/packages#${service.id}`)
-                }
-              />
+                style={{ transitionDelay: gridIn ? `${i * 90}ms` : "0ms" }}
+                className={`motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+                  gridIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+              >
+                <ServiceCard
+                  service={service}
+                  onClick={() =>
+                    navigate(`${unit.path}/packages#${service.id}`)
+                  }
+                />
+              </div>
             ))}
           </div>
         </Container>

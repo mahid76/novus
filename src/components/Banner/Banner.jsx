@@ -236,16 +236,19 @@ const Banner = () => {
 
                         <ul className="mt-8 divide-y divide-hairline border-y border-hairline">
                             {includes.map((item, i) => (
-                                <Reveal
-                                    as="li"
-                                    key={item}
-                                    delay={650 + i * 90}
-                                    className="group flex items-center justify-between py-4 text-sm text-ink transition-[padding-left,color] duration-300 hover:pl-1 hover:text-primary"
-                                >
-                                    <span>{item}</span>
-                                    <span className="font-tertiary text-primary/80 transition-transform duration-300 group-hover:scale-125">
-                                        ✓
-                                    </span>
+                                /* Reveal only handles the one-time mount-in fade/rise + its
+                                   stagger delay. The hover interaction lives on a plain inner
+                                   element with its own transition (no inline delay), so hovering
+                                   responds instantly instead of inheriting Reveal's entrance
+                                   delay — that mismatch was why the hover effect used to show
+                                   up late and out of sync with the checkmark. */
+                                <Reveal as="li" key={item} delay={650 + i * 90}>
+                                    <div className="group flex items-center justify-between py-4 text-sm text-ink transition-[padding-left,color] duration-300 ease-out hover:pl-1 hover:text-primary">
+                                        <span>{item}</span>
+                                        <span className="font-tertiary text-primary/80 transition-transform duration-300 ease-out group-hover:scale-125">
+                                            ✓
+                                        </span>
+                                    </div>
                                 </Reveal>
                             ))}
                         </ul>

@@ -84,7 +84,7 @@ const Navbar = () => {
             <Container>
                 <nav
                     className={
-                        "flex items-center justify-between transition-all duration400 " +
+                        "flex items-center justify-between transition-all duration-400 " +
                         (scrolled ? "py-2" : "py-3")
                     }
                 >
@@ -302,7 +302,7 @@ const Navbar = () => {
                         </a>
                         <Link
                             to="/booking"
-                            className="relative overflow-hidden rounded-md border border-primary font-primary bg-primary px-5 py-2.5 text-sm font-semibold text-black transition-all duration400 hover:bg-black hover:text-primary hover:shadow-md hover:shadow-primary/30"
+                            className="relative overflow-hidden rounded-md border border-primary font-primary bg-primary px-5 py-2.5 text-sm font-semibold text-black transition-all duration-400 hover:bg-black hover:text-primary hover:shadow-md hover:shadow-primary/30"
                         >
                             Book Consultation
                         </Link>
@@ -327,7 +327,7 @@ const Navbar = () => {
                         >
                             <span
                                 className={
-                                    "block h-0.5 w-7 rounded-full bg-white transition-all duration400 ease-in-out " +
+                                    "block h-0.5 w-7 rounded-full bg-white transition-all duration-400 ease-in-out " +
                                     (isOpen ? "translate-y-[7px] rotate-45 bg-primary" : "")
                                 }
                             />
@@ -350,7 +350,7 @@ const Navbar = () => {
                 {/* Mobile menu panel */}
                 <div
                     className={
-                        "grid overflow-hidden transition-all duration400 ease-out lg:hidden " +
+                        "grid overflow-hidden transition-all duration-400 ease-out lg:hidden " +
                         (isOpen
                             ? "grid-rows-[1fr] opacity-100"
                             : "grid-rows-[0fr] opacity-0")
@@ -508,7 +508,7 @@ const Navbar = () => {
 
                         <div
                             className={
-                                "flex flex-col gap-4 border-t border-primary/20 py-4 transition-all duration400 ease-out " +
+                                "flex flex-col gap-4 border-t border-primary/20 py-4 transition-all duration-400 ease-out " +
                                 (isOpen
                                     ? "translate-y-0 opacity-100"
                                     : "translate-y-2 opacity-0")
