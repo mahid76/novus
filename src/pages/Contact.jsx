@@ -71,7 +71,7 @@ const OFFICE_ADDRESS = "102/A, 4th floor, Kakrail, Dhaka.";
 // "latitude,longitude". See the comment below OFFICE_ADDRESS in the
 // message for how to find yours; until you set this, the map falls
 // back to searching OFFICE_ADDRESS as text.
-const OFFICE_COORDS = "23.74417069208118, 90.40855799565324"; // e.g. "23.733298,90.408707"
+const OFFICE_COORDS = "23.73853910812283, 90.40911424093163"; // e.g. "23.733298,90.408707"
 
 const hoursRow = {
 	icon: Clock,
