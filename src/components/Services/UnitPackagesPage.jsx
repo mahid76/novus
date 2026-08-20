@@ -22,13 +22,15 @@ const PackageSection = ({ unitKey, service, sectionRefs }) => {
       className="scroll-mt-24 border-b border-hairline py-16 sm:py-[70px]"
     >
       <Container>
-        <div
-          ref={ref}
-          className={`motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
-        >
-          <div className="flex flex-wrap items-baseline justify-between gap-5">
+        {/* ref only drives the IntersectionObserver trigger below — kept
+            free of its own opacity/transform so it doesn't compound with
+            the header and per-card fades nested inside it. */}
+        <div ref={ref}>
+          <div
+            className={`flex flex-wrap items-baseline justify-between gap-5 motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+              inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+            }`}
+          >
             <div>
               <div className="font-tertiary text-[11px] tracking-[0.22em] uppercase text-primary">
                 {service.icon} Service
@@ -43,8 +45,16 @@ const PackageSection = ({ unitKey, service, sectionRefs }) => {
           </div>
 
           <div className="mt-9 grid gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
-            {pkgs.map((pkg) => (
-              <PackageCard key={pkg.name} pkg={pkg} />
+            {pkgs.map((pkg, i) => (
+              <div
+                key={pkg.name}
+                style={{ transitionDelay: inView ? `${i * 90}ms` : "0ms" }}
+                className={`motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
+                  inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+              >
+                <PackageCard pkg={pkg} />
+              </div>
             ))}
           </div>
         </div>
