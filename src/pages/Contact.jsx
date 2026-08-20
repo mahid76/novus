@@ -5,11 +5,11 @@ import {
 	Clock,
 	Mail,
 	MapPin,
-	MessageCircle,
 	Phone,
 	Send,
 	X,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router";
 import Container from "../components/Layout/Container";
@@ -38,32 +38,47 @@ const EMAILJS_PUBLIC_KEY = "cxR8z_bsDuZ9e8_Pj";
 
 const DIVISIONS = [
 	"Novus Advisory Firm",
-	"Novus Tax",
+	"Novus- Tax VAT RJSC & Audit",
 	"Novus Overseas",
 	"Novus Translation Centre",
 	"Not sure yet",
 ];
 const DIVISION_OPTIONS = DIVISIONS.map((d) => ({ value: d, label: d }));
 
+// "Call us" holds multiple numbers under ONE heading/icon.
+// Add or remove entries here — each needs a display "label" and the
+// matching "tel:" href (digits only, with country code, no spaces).
+const phoneNumbers = [
+	{ label: "+880 1886 - 811862", href: "tel:+8801886811862" },
+	{ label: "+880 1327 - 803381", href: "tel:+8801327803381" },
+	{ label: "+880 1767 - 720716", href: "tel:+8801767720716" },
+];
+
 const infoRows = [
-	{
-		icon: Phone,
-		label: "Call us",
-		content: "+880 1886 - 811862",
-		href: "tel:+8801886811862",
-	},
 	{
 		icon: Mail,
 		label: "Email",
-		content: "info@novusgroup.com.bd",
-		href: "mailto:info@novusgroup.com.bd",
+		content: "novusadvisoryfirm@gmail.com",
+		href: "mailto:novusadvisoryfirm@gmail.com",
 	},
 ];
+
+// Shown under "Office" as the address text.
+const OFFICE_ADDRESS = "102/A, 4th floor, Kakrail, Dhaka.";
+
+// Exact pin for the map (text addresses like "4th floor" often don't
+// pinpoint the right building — coordinates always do). Format:
+// "latitude,longitude". See the comment below OFFICE_ADDRESS in the
+// message for how to find yours; until you set this, the map falls
+// back to searching OFFICE_ADDRESS as text.
+const OFFICE_COORDS = "23.74417069208118, 90.40855799565324"; // e.g. "23.733298,90.408707"
 
 const hoursRow = {
 	icon: Clock,
 	label: "Hours",
-	content: "Sat–Thu, 10:00 AM – 7:00 PM",
+	// content: "Sat–Thu, 10:00 AM – 7:00 PM",
+	content: "24 / 7",
+
 };
 
 /* ---------------------------------------------------------
@@ -326,6 +341,29 @@ const Contact = () => {
 
 						{/* Right: contact info */}
 						<div className="border-hairline pt-8 lg:border-l lg:pt-0 lg:pl-14">
+							{/* Call us — one heading, multiple numbers stacked underneath */}
+							<div className="flex items-start gap-4 border-b border-hairline py-5 first:pt-0">
+								<div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border border-primary/40">
+									<Phone size={16} strokeWidth={1.8} className="text-primary" />
+								</div>
+								<div>
+									<b className="block font-primary text-[13.5px] text-ink">
+										Call us
+									</b>
+									<div className="mt-1 flex flex-col gap-1">
+										{phoneNumbers.map((phone) => (
+											<a
+												key={phone.href}
+												href={phone.href}
+												className="text-[13px] text-ink-dim transition-colors hover:text-primary"
+											>
+												{phone.label}
+											</a>
+										))}
+									</div>
+								</div>
+							</div>
+
 							{infoRows.map(({ icon: Icon, label, content, href }) => (
 								<div
 									key={label}
@@ -372,12 +410,14 @@ const Contact = () => {
 										Office
 									</b>
 									<a
-										href="https://www.google.com/maps/search/?api=1&query=Dhaka,Bangladesh"
+										href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+											OFFICE_COORDS || OFFICE_ADDRESS,
+										)}`}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="inline-flex items-center gap-1.5 text-[13px] text-primary transition-colors hover:text-primary/80 hover:underline"
 									>
-										Dhaka, Bangladesh
+										{OFFICE_ADDRESS}
 										<svg
 											viewBox="0 0 24 24"
 											className="h-3 w-3"
@@ -415,7 +455,7 @@ const Contact = () => {
 								rel="noopener noreferrer"
 								className="mt-6 flex items-center justify-center gap-2.5 rounded-sm border border-primary bg-primary px-6 py-3 text-sm font-semibold text-black transition-colors duration-300 hover:bg-transparent hover:text-primary"
 							>
-								<MessageCircle size={16} strokeWidth={2} />
+								<FaWhatsapp size={17} />
 								Chat on WhatsApp
 							</a>
 
@@ -425,7 +465,9 @@ const Contact = () => {
 								style={{ filter: "grayscale(.15) contrast(1.02)" }}
 							>
 								<iframe
-									src="https://www.google.com/maps?q=Dhaka,Bangladesh&output=embed"
+									src={`https://www.google.com/maps?q=${encodeURIComponent(
+									OFFICE_COORDS || OFFICE_ADDRESS,
+								)}&z=17&output=embed`}
 									width="100%"
 									height="220"
 									style={{ border: 0, display: "block" }}

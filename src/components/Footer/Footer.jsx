@@ -14,7 +14,7 @@ const footerColumns = [
 		],
 	},
 	{
-		title: "Novus Tax",
+		title: "Novus- Tax VAT RJSC & Audit",
 		path: "/NovusTax",
 		links: [
 			"Company Incorporation",
