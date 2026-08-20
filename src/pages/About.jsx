@@ -148,6 +148,7 @@ const DivisionBlock = ({ division }) => {
 const About = () => {
     const [headRef, headVisible] = useReveal();
     const [pillarsRef, pillarsVisible] = useReveal();
+    const [closingRef, closingVisible] = useReveal();
 
     return (
         <div className="bg-bg">
@@ -200,7 +201,7 @@ const About = () => {
                         {pillars.map((p, i) => (
                             <div
                                 key={p.tag}
-                                className={`bg-bg p-8 transition-all duration-500 ease-out sm:p-9 ${
+                                className={`bg-bg p-8 transition-all duration-700 ease-out sm:p-9 ${
                                     pillarsVisible
                                         ? "translate-y-0 opacity-100"
                                         : "translate-y-4 opacity-0"
@@ -230,7 +231,12 @@ const About = () => {
             {/* ============ CLOSING STRIP ============ */}
             <section className="border-t border-hairline py-16 lg:py-20">
                 <Container>
-                    <div className="flex flex-col items-start justify-between gap-6 rounded-sm border border-primary/25 bg-surface p-10 sm:flex-row sm:items-center">
+                    <div
+                        ref={closingRef}
+                        className={`flex flex-col items-start justify-between gap-6 rounded-sm border border-primary/25 bg-surface p-10 motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out sm:flex-row sm:items-center ${
+                            closingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+                        }`}
+                    >
                         <div>
                             <div className="flex items-center gap-2.5 font-tertiary text-[11px] uppercase tracking-[0.22em] text-primary">
                                 <Award size={14} strokeWidth={2} />

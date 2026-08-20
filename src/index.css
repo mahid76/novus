@@ -30,13 +30,22 @@
 
 body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-primary); }
 
+/* Smooth scrolling site-wide for in-page/anchor jumps (e.g. package section
+   links). Explicit behavior:"instant" calls — like ScrollToTop's route-change
+   reset — still override this per-call, so page navigation stays instant
+   while in-page jumps stay smooth. */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Elegant fade-up used for the review quote crossfade on index change */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up { animation: fadeUp .6s cubic-bezier(.2,.7,.2,1) both; }
- 
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .animate-fade-up { animation: none; }
 }
