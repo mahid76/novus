@@ -33,7 +33,7 @@ const Navbar = () => {
 		{
 			initials: "TX",
 			logo: taxLogo,
-			title: "Novus Tax",
+			title: "Novus- Tax VAT RJSC & Audit",
 			subtitle: "Tax · VAT · RJSC · Audit",
 			href: "/NovusTax",
 		},
