@@ -9,7 +9,7 @@ const footerColumns = [
 		links: [
 			"Asset Valuation",
 			"Tax Return Filing",
-			"Net Worth Certificate",
+			"SOP",
 			"Notary & Translation",
 		],
 	},
