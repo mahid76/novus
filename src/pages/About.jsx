@@ -5,7 +5,7 @@ import overseasLogo from "../assets/logos/novus-overseas-logo.jpeg";
 import taxLogo from "../assets/logos/novus-tax-logo.jpeg";
 import translationLogo from "../assets/logos/novus-translation-logo.svg";
 // Replace with the real CEO photo path
-import ceoPhoto from "../assets/ceo.jpg";
+import ceoPhoto from "../assets/ceo.jpeg";
 import Container from "../components/Layout/Container";
 import { useReveal } from "../hooks/useReveal";
 
