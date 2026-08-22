@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { useReveal } from "../../hooks/useReveal";
 import Container from "../Layout/Container";
+import logo from "../../assets/logo.jpg"
 
 const footerColumns = [
 	{
@@ -60,15 +61,7 @@ const Footer = () => {
 				<div className="grid gap-10 grid-cols-2 md:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
 					<div className="col-span-2 md:col-span-1">
 						<Link to="/" className="flex items-center gap-3">
-							<div className="w-11 h-11 rounded-full border border-primary/40 flex items-center justify-center font-secondary font-bold text-primary text-[15px]">
-								N
-							</div>
-							<div className="font-secondary text-[19px] tracking-wide text-ink font-semibold leading-tight">
-								NOVUS
-								<span className="block font-tertiary text-[9px] tracking-[0.28em] text-ink-dim font-normal mt-0.5">
-									GROUP
-								</span>
-							</div>
+							<img className="max-w-[140px]" src={logo} alt="" />
 						</Link>
 						<p className="text-ink-dim text-[13.5px] leading-relaxed mt-4 max-w-[280px]">
 							Professional Advisory · Trusted Documentation · Reliable
