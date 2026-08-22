@@ -1,19 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { Link } from "react-router";
 import Container from "../Layout/Container";
-
-const includes = [
-    "Documentation review",
-    "Professional formatting",
-    "Confidential handling",
-    "Dedicated advisor",
-];
+import bannerImg1 from "../../assets/BannerImg/tax.jpg"
+import bannerImg2 from "../../assets/BannerImg/documentatio.jpg"
+import bannerImg3 from "../../assets/BannerImg/study.jpg"
 
 const stats = [
-    { value: 4, suffix: "", label: "Advisory Units" },
+    { value: 4, suffix: "", label: "Units" },
     { value: 20, suffix: "+", label: "Services Offered" },
-    { value: null, display: "BD", label: "Serving Nationwide" },
+    { value: 500, suffix: "+", label: "Clients Served" },
+    { value: 8, suffix: "+", label: "Years Experience" },
+    { value: 12, suffix: "+", label: "Expert Instructors" },
+    { value: null, display: "24h", label: "Response Time" },
+];
+
+/* Replace these with your real image paths (e.g. import from /src/assets) */
+const slides = [
+    {
+        src: bannerImg1,
+        caption: "Tax & corporate compliance.",
+    },
+    {
+        src: bannerImg2,
+        caption: "Documentation, done right.",
+    },
+    {
+        src: bannerImg3,
+        caption: "Study & visa consultancy.",
+    },
 ];
 
 /* Generic fade + rise reveal, fires once on mount. */
@@ -89,6 +103,122 @@ const CountUp = ({ to, suffix = "", duration = 1400, delay = 400 }) => {
     return <>{value}{suffix}</>;
 };
 
+/* Draggable (mouse + touch) horizontal carousel with ken-burns zoom on the active slide, pauses on hover/drag. */
+const ImageSlider = ({ items, interval = 4000 }) => {
+    const [active, setActive] = useState(0);
+    const [paused, setPaused] = useState(false);
+    const [dragX, setDragX] = useState(0);
+    const [dragging, setDragging] = useState(false);
+    const trackRef = useRef(null);
+    const startXRef = useRef(0);
+    const widthRef = useRef(1);
+
+    useEffect(() => {
+        if (paused || dragging || items.length <= 1) return;
+        const id = setInterval(() => {
+            setActive((i) => (i + 1) % items.length);
+        }, interval);
+        return () => clearInterval(id);
+    }, [paused, dragging, items.length, interval]);
+
+    const goTo = (i) => setActive((i + items.length) % items.length);
+
+    const handlePointerDown = (e) => {
+        widthRef.current = trackRef.current?.offsetWidth || 1;
+        startXRef.current = e.clientX;
+        e.currentTarget.setPointerCapture?.(e.pointerId);
+        setDragging(true);
+        setPaused(true);
+    };
+
+    const handlePointerMove = (e) => {
+        if (!dragging) return;
+        setDragX(e.clientX - startXRef.current);
+    };
+
+    const endDrag = () => {
+        if (!dragging) return;
+        const threshold = widthRef.current * 0.15;
+        if (dragX <= -threshold) goTo(active + 1);
+        else if (dragX >= threshold) goTo(active - 1);
+        setDragX(0);
+        setDragging(false);
+        setTimeout(() => setPaused(false), 300);
+    };
+
+    return (
+        <div
+            className="relative aspect-[4/5] w-full select-none overflow-hidden rounded-sm bg-surface"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => {
+                setPaused(false);
+                if (dragging) endDrag();
+            }}
+        >
+            <div
+                ref={trackRef}
+                className={
+                    "flex h-full cursor-grab touch-pan-y active:cursor-grabbing " +
+                    (dragging ? "" : "transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]")
+                }
+                style={{
+                    transform: `translateX(calc(${-active * 100}% + ${dragX}px))`,
+                }}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={endDrag}
+                onPointerCancel={endDrag}
+            >
+                {items.map((slide, i) => (
+                    <div key={slide.src} className="relative h-full w-full flex-none">
+                        <img
+                            src={slide.src}
+                            alt={slide.caption || ""}
+                            draggable={false}
+                            className={
+                                "h-full w-full object-cover transition-transform duration-[7000ms] ease-linear " +
+                                (i === active && !dragging ? "scale-110" : "scale-100")
+                            }
+                        />
+                        {/* subtle gradient so caption/dots stay legible over any image */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
+                        {slide.caption && (
+                            <p className="absolute bottom-6 left-6 right-6 font-secondary text-sm font-medium text-white sm:text-base">
+                                {slide.caption}
+                            </p>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {/* progress-style dots */}
+            {items.length > 1 && (
+                <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+                    {items.map((_, i) => (
+                        <button
+                            key={i}
+                            aria-label={`Go to slide ${i + 1}`}
+                            onClick={() => goTo(i)}
+                            className="group pointer-events-auto relative h-1.5 w-6 overflow-hidden rounded-full bg-white/30"
+                        >
+                            <span
+                                className={
+                                    "absolute inset-y-0 left-0 rounded-full bg-primary transition-[width] " +
+                                    (i === active && !paused
+                                        ? "w-full duration-[4000ms] ease-linear"
+                                        : i === active
+                                        ? "w-full duration-300"
+                                        : "w-0 duration-300")
+                                }
+                            />
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
 const Banner = () => {
     return (
         <section
@@ -107,10 +237,6 @@ const Banner = () => {
                 @keyframes novus-draw {
                     from { transform: scaleX(0); }
                     to { transform: scaleX(1); }
-                }
-                @keyframes novus-spin-slow {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
                 }
                 @keyframes novus-glow {
                     0%, 100% { box-shadow: 0 2px 14px rgba(20,18,12,0.05), 0 0 0 rgba(212,175,55,0); }
@@ -181,11 +307,11 @@ const Banner = () => {
 
                         <Reveal
                             delay={720}
-                            className="mt-14 flex flex-wrap gap-10 sm:gap-14"
+                            className="mt-14 grid grid-cols-3 gap-x-8 gap-y-8 sm:gap-x-10 sm:gap-y-10"
                         >
                             {stats.map((stat) => (
                                 <div key={stat.label} className="group">
-                                    <div className="font-secondary text-3xl font-semibold text-primary transition-transform duration-300 group-hover:-translate-y-0.5">
+                                    <div className="font-secondary text-2xl font-semibold text-primary transition-transform duration-300 group-hover:-translate-y-0.5 sm:text-3xl">
                                         {stat.value !== null ? (
                                             <CountUp to={stat.value} suffix={stat.suffix} delay={800} />
                                         ) : (
@@ -200,58 +326,12 @@ const Banner = () => {
                         </Reveal>
                     </div>
 
-                    {/* Right column — info card */}
+                    {/* Right column — image slider inside the original bordered card */}
                     <Reveal
                         delay={300}
-                        className="relative rounded-sm border border-primary/25 bg-surface p-10 [animation:novus-glow_4s_ease-in-out_infinite] before:content-[''] before:inset-[9px] before:border before:border-[#C69A426B] before:rounded before:absolute"
+                        className="rounded-sm border border-primary/25 bg-surface p-3 animation-[novus-glow_4s_ease-in-out_infinite]"
                     >
-                        <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full">
-                            <svg
-                                className="absolute inset-0 h-full w-full [animation:novus-spin-slow_9s_linear_infinite]"
-                                viewBox="0 0 100 100"
-                                fill="none"
-                            >
-                                <circle
-                                    cx="50"
-                                    cy="50"
-                                    r="48"
-                                    stroke="#C69A42"
-                                    strokeOpacity="0.4"
-                                    strokeWidth="1"
-                                    strokeDasharray="6 10"
-                                />
-                            </svg>
-                            <div className="absolute inset-[6px] rounded-full border border-primary/40" />
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-primary/70">
-                                <IoCheckmarkCircleOutline size={30} strokeWidth={2} className="text-primary" />
-                            </div>
-                        </div>
-
-                        <h3 className="mt-6 text-center font-secondary text-xl font-semibold text-ink">
-                            Certified &amp; Structured
-                        </h3>
-                        <p className="mt-1 text-center font-tertiary text-[11px] uppercase tracking-[0.12em] text-muted">
-                            What every engagement includes
-                        </p>
-
-                        <ul className="mt-8 divide-y divide-hairline border-y border-hairline">
-                            {includes.map((item, i) => (
-                                /* Reveal only handles the one-time mount-in fade/rise + its
-                                   stagger delay. The hover interaction lives on a plain inner
-                                   element with its own transition (no inline delay), so hovering
-                                   responds instantly instead of inheriting Reveal's entrance
-                                   delay — that mismatch was why the hover effect used to show
-                                   up late and out of sync with the checkmark. */
-                                <Reveal as="li" key={item} delay={650 + i * 90}>
-                                    <div className="group flex items-center justify-between py-4 text-sm text-ink transition-[padding-left,color] duration-300 ease-out hover:pl-1 hover:text-primary">
-                                        <span>{item}</span>
-                                        <span className="font-tertiary text-primary/80 transition-transform duration-300 ease-out group-hover:scale-125">
-                                            ✓
-                                        </span>
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </ul>
+                        <ImageSlider items={slides} />
                     </Reveal>
                 </div>
             </Container>
