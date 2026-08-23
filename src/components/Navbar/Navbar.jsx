@@ -1,10 +1,10 @@
 import { ChevronDown, Moon, Phone, Sun } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-import logo from "../../assets/logo.jpg";
-import advisoryLogo from "../../assets/logos/novus-advisory-logo.jpeg";
-import overseasLogo from "../../assets/logos/novus-overseas-logo.jpeg";
-import taxLogo from "../../assets/logos/novus-tax-logo.jpeg";
+import logo from "../../assets/logo.webp";
+import advisoryLogo from "../../assets/logos/novus-advisory-logo.webp";
+import overseasLogo from "../../assets/logos/novus-overseas-logo.webp";
+import taxLogo from "../../assets/logos/novus-tax-logo.webp";
 import translationLogo from "../../assets/logos/novus-translation-logo.svg";
 import { useTheme } from "../../context/ThemeContext";
 import Container from "../Layout/Container";
