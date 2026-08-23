@@ -22,7 +22,7 @@ const slides = [
     },
     {
         src: bannerImg2,
-        caption: "Documentation, done right.",
+        caption: "Documentation, done right..",
     },
     {
         src: bannerImg3,
