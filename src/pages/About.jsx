@@ -1,5 +1,6 @@
 import { Award } from "lucide-react";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 import advisoryLogo from "../assets/logos/novus-advisory-logo.webp";
 import overseasLogo from "../assets/logos/novus-overseas-logo.webp";
 import taxLogo from "../assets/logos/novus-tax-logo.webp";
@@ -205,6 +206,14 @@ const About = () => {
 
 	return (
 		<div className="bg-bg">
+			<Helmet>
+				<title>About Us | Novus Group Bangladesh</title>
+				<meta
+					name="description"
+					content="Novus Group is a Bangladesh-based professional group with four divisions — Novus Advisory Firm, Novus Tax, Novus Overseas, and Novus Translation Centre — offering financial, tax, overseas consultancy and translation services."
+				/>
+			</Helmet>
+
 			{/* ============ PAGE HEAD ============ */}
 			<div
 				className="relative overflow-hidden border-b border-hairline py-16 lg:py-24"
