@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router";
 import Container from "../Layout/Container";
-import bannerImg1 from "../../assets/BannerImg/tax.jpg"
-import bannerImg2 from "../../assets/BannerImg/documentatio.jpg"
-import bannerImg3 from "../../assets/BannerImg/study.jpg"
+import bannerImg1 from "../../assets/BannerImg/banner01.webp"
+import bannerImg2 from "../../assets/BannerImg/banner02.webp"
+import bannerImg3 from "../../assets/BannerImg/banner03.webp"
 
 const stats = [
     { value: 4, suffix: "", label: "Units" },

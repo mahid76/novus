@@ -1,7 +1,7 @@
 import { Link } from "react-router";
+import logo from "../../assets/logo.webp";
 import { useReveal } from "../../hooks/useReveal";
 import Container from "../Layout/Container";
-import logo from "../../assets/logo.jpg"
 
 const footerColumns = [
 	{

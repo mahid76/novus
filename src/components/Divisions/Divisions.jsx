@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import advisoryLogo from "../../assets/logos/novus-advisory-logo.jpeg";
-import overseasLogo from "../../assets/logos/novus-overseas-logo.jpeg";
-import taxLogo from "../../assets/logos/novus-tax-logo.jpeg";
+import advisoryLogo from "../../assets/logos/novus-advisory-logo.webp";
+import overseasLogo from "../../assets/logos/novus-overseas-logo.webp";
+import taxLogo from "../../assets/logos/novus-tax-logo.webp";
 import translationLogo from "../../assets/logos/novus-translation-logo.svg";
 import { useReveal } from "../../hooks/useReveal";
 import Container from "../Layout/Container";
