@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 import advisoryLogo from "../assets/logos/novus-advisory-logo.webp";
 import overseasLogo from "../assets/logos/novus-overseas-logo.webp";
 import taxLogo from "../assets/logos/novus-tax-logo.webp";
@@ -23,6 +24,14 @@ const Services = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title>Our Services | Novus Group Bangladesh</title>
+				<meta
+					name="description"
+					content="Explore Novus Group's four divisions — Advisory Firm, Tax VAT RJSC & Audit, Overseas, and Translation Centre — and find the right services for your need."
+				/>
+			</Helmet>
+
 			{/* Page header — same pattern as About/Contact/Booking */}
 			<div className="relative overflow-hidden border-b border-hairline pt-16 pb-14">
 				<div

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 import Container from "../Layout/Container";
 import { useReveal } from "../../hooks/useReveal";
 import { getUnit } from "../../data/servicesData";
@@ -15,6 +16,11 @@ const UnitServicesPage = ({ unitKey }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{unit.title} | Novus Group</title>
+        <meta name="description" content={unit.intro} />
+      </Helmet>
+
       {/* Page header */}
       <div className="relative overflow-hidden border-b border-hairline pt-16 pb-14">
         <div
