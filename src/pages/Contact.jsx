@@ -9,7 +9,7 @@ import {
 	Send,
 	X,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router";
 import Container from "../components/Layout/Container";
@@ -62,6 +62,8 @@ const infoRows = [
 		href: "mailto:novusadvisoryfirm@gmail.com",
 	},
 ];
+
+
 
 // Shown under "Office" as the address text.
 const OFFICE_ADDRESS = "102/A, 4th floor, Kakrail, Dhaka.";
@@ -458,6 +460,9 @@ const Contact = () => {
 								<FaWhatsapp size={17} />
 								Chat on WhatsApp
 							</a>
+
+							{/* Social links */}
+
 
 							{/* Map embed */}
 							<div

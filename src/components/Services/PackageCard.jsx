@@ -11,26 +11,14 @@ const PackageCard = ({ pkg }) => {
   )}`;
 
   return (
-    <div
-      className={`relative flex flex-col rounded-sm border p-8 shadow-[0_2px_14px_rgba(0,0,0,.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,.4)] ${
-        pkg.featured
-          ? "border-primary bg-[linear-gradient(180deg,rgba(212,175,55,.07),var(--surface)_40%)]"
-          : "border-hairline bg-surface"
-      }`}
-    >
-      {pkg.featured && (
-        <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 font-tertiary text-[10px] font-semibold tracking-[0.08em] text-[#0a0a09]">
-          Most Popular
-        </span>
-      )}
-
+    <div className="relative flex flex-col rounded-sm border border-hairline bg-surface p-8 shadow-[0_2px_14px_rgba(0,0,0,.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,.4)]">
       <span className="font-tertiary text-[11px] uppercase tracking-[0.15em] text-primary">
         {pkg.tier}
       </span>
       <h3 className="mt-2.5 font-secondary text-xl font-semibold text-ink">
         {pkg.name}
       </h3>
-      <div className="mt-2.5 font-secondary text-[15px] text-ink-dim">
+      <div className="mt-2.5 font-secondary text-2xl font-semibold text-primary">
         {pkg.price}
       </div>
 

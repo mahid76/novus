@@ -26,6 +26,12 @@
 [data-theme="light"] {
   --bg:#faf8f2; --surface:#fffdf7; --surface-2:#eae3d0;
   --ink:#211f1a; --ink-dim:#46422f; --muted:#6f6a58; --hair:rgba(20,18,12,.14);
+  /* The bright dark-theme gold (#d4af37) fails contrast against this light
+     background (~2:1 — nearly unreadable). This deeper, more saturated gold
+     keeps the same accent identity but passes WCAG AA (~4.7:1) for text,
+     borders, and icons. Gold buttons (bg-primary + black text) stay readable
+     either way, so this only meaningfully changes small/medium text. */
+  --color-primary: #8a6a1c;
 }
 
 body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-primary); }

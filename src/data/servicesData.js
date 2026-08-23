@@ -2,7 +2,21 @@
 // Add/remove a unit here and its Service + Package pages update everywhere
 // (Navbar, Divisions grid, and routing still need their own entries).
 
-export const WHATSAPP_NUMBER = "8801961727320";
+export const WHATSAPP_NUMBER = "8801886811862";
+
+// ---- package prices ------------------------------------------------------
+// EDIT THESE with your real prices — every package pulls from here, so
+// changing a number below updates it everywhere that tier is used.
+// (Tiers are shared across services within a division, not per-service,
+// so there are only 5 numbers to set: 2 for Advisory/Tax/Translation,
+// 3 for Overseas.)
+const PRICES = {
+	standard: "৳0,000", // Advisory Firm / Tax / Translation Centre — Standard
+	premium: "৳0,000", // Advisory Firm / Tax / Translation Centre — Premium
+	overseasBasic: "৳0,000", // Overseas — Basic
+	overseasStandard: "৳0,000", // Overseas — Standard
+	overseasPremium: "৳0,000", // Overseas — Premium
+};
 
 // ---- package tier generators -------------------------------------------
 
@@ -13,7 +27,7 @@ function twoTierPackages(base) {
 		{
 			tier: "Standard",
 			name: `${base} — Standard`,
-			price: "Contact for quote",
+			price: PRICES.standard,
 			features: [
 				"Initial document review",
 				"Standard report/format preparation",
@@ -24,14 +38,14 @@ function twoTierPackages(base) {
 		{
 			tier: "Premium",
 			name: `${base} — Premium`,
-			price: "Contact for quote",
+			price: PRICES.premium,
 			features: [
 				"Priority document review",
 				"Detailed report with full documentation support",
 				"Dedicated advisor + phone support",
 				"Faster turnaround",
 			],
-			featured: true,
+			featured: false,
 		},
 	];
 }
@@ -43,7 +57,7 @@ function threeTierPackages(base) {
 		{
 			tier: "Basic",
 			name: `${base} — Basic`,
-			price: "Contact for quote",
+			price: PRICES.overseasBasic,
 			features: [
 				"Initial consultation",
 				"Document checklist",
@@ -54,18 +68,18 @@ function threeTierPackages(base) {
 		{
 			tier: "Standard",
 			name: `${base} — Standard`,
-			price: "Contact for quote",
+			price: PRICES.overseasStandard,
 			features: [
 				"Everything in Basic",
 				"Full application preparation",
 				"Interview / process preparation",
 			],
-			featured: true,
+			featured: false,
 		},
 		{
 			tier: "Premium",
 			name: `${base} — Premium`,
-			price: "Contact for quote",
+			price: PRICES.overseasPremium,
 			features: [
 				"Everything in Standard",
 				"End-to-end dedicated case handling",
