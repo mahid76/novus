@@ -1,5 +1,6 @@
 import { Award, CalendarClock, CheckCircle2 } from "lucide-react";
 import React, { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Container from "../components/Layout/Container";
 import ThemedSelect from "../components/UI/ThemedSelect";
 import { useTheme } from "../context/ThemeContext";
@@ -108,6 +109,14 @@ Preferred Time: ${formatTime12h(form.time)}`;
 
 	return (
 		<div>
+			<Helmet>
+				<title>Book a Consultation | Novus Group</title>
+				<meta
+					name="description"
+					content="Book a free consultation with Novus Group — choose your division and service, and an advisor will confirm your session via WhatsApp."
+				/>
+			</Helmet>
+
 			{/* Page header */}
 			<div className="relative overflow-hidden border-b border-hairline pt-16 pb-14">
 				<div
@@ -120,11 +129,10 @@ Preferred Time: ${formatTime12h(form.time)}`;
 				<Container>
 					<div
 						ref={headRef}
-						className={`relative motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${
-							headVisible
+						className={`relative motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out ${headVisible
 								? "opacity-100 translate-y-0"
 								: "opacity-0 translate-y-5"
-						}`}
+							}`}
 					>
 						<div className="font-tertiary text-[11px] tracking-[0.08em] text-muted">
 							Home <span className="text-primary">/</span>{" "}
@@ -146,11 +154,10 @@ Preferred Time: ${formatTime12h(form.time)}`;
 				<Container>
 					<div
 						ref={formRef}
-						className={`grid gap-12 motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out lg:grid-cols-2 lg:gap-16 ${
-							formVisible
+						className={`grid gap-12 motion-safe:transition-all motion-safe:duration-700 motion-safe:ease-out lg:grid-cols-2 lg:gap-16 ${formVisible
 								? "opacity-100 translate-y-0"
 								: "opacity-0 translate-y-6"
-						}`}
+							}`}
 					>
 						{/* Left: form */}
 						<form onSubmit={handleSubmit}>

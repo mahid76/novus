@@ -12,6 +12,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 import Container from "../components/Layout/Container";
 import ThemedSelect from "../components/UI/ThemedSelect";
 import { useReveal } from "../hooks/useReveal";
@@ -109,9 +110,8 @@ const ConfirmationModal = ({ status, onClose }) => {
 				</button>
 
 				<div
-					className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full border ${
-						isSuccess ? "border-primary/50" : "border-red-400/50"
-					}`}
+					className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full border ${isSuccess ? "border-primary/50" : "border-red-400/50"
+						}`}
 				>
 					{isSuccess ? (
 						<CheckCircle2
@@ -214,6 +214,14 @@ const Contact = () => {
 
 	return (
 		<div className="bg-bg">
+			<Helmet>
+				<title>Contact Us | Novus Group Bangladesh</title>
+				<meta
+					name="description"
+					content="Get in touch with Novus Group — questions about advisory, tax, overseas consultancy or translation services. Call, WhatsApp, or send us a message."
+				/>
+			</Helmet>
+
 			<ConfirmationModal status={status} onClose={closeModal} />
 
 			{/* ============ PAGE HEAD ============ */}
@@ -227,11 +235,10 @@ const Contact = () => {
 				<Container>
 					<div
 						ref={headRef}
-						className={`transition-all duration-700 ease-out ${
-							headVisible
+						className={`transition-all duration-700 ease-out ${headVisible
 								? "translate-y-0 opacity-100"
 								: "translate-y-5 opacity-0"
-						}`}
+							}`}
 					>
 						<div className="font-tertiary text-[11px] uppercase tracking-[0.08em] text-muted">
 							<Link to="/" className="transition-colors hover:text-primary">
@@ -258,11 +265,10 @@ const Contact = () => {
 				<Container>
 					<div
 						ref={formRef}
-						className={`grid grid-cols-1 gap-12 transition-all duration-700 ease-out lg:grid-cols-2 lg:gap-[60px] ${
-							formVisible
+						className={`grid grid-cols-1 gap-12 transition-all duration-700 ease-out lg:grid-cols-2 lg:gap-[60px] ${formVisible
 								? "translate-y-0 opacity-100"
 								: "translate-y-5 opacity-0"
-						}`}
+							}`}
 					>
 						{/* Left: form */}
 						<form onSubmit={handleSubmit}>
@@ -466,8 +472,8 @@ const Contact = () => {
 							>
 								<iframe
 									src={`https://www.google.com/maps?q=${encodeURIComponent(
-									OFFICE_COORDS || OFFICE_ADDRESS,
-								)}&z=17&output=embed`}
+										OFFICE_COORDS || OFFICE_ADDRESS,
+									)}&z=17&output=embed`}
 									width="100%"
 									height="220"
 									style={{ border: 0, display: "block" }}
