@@ -9,7 +9,7 @@ import PackageCard from "./PackageCard";
    can be called once per instance instead of inside a .map() loop,
    matching the pattern used for division blocks on the About page. */
 const PackageSection = ({ unitKey, service, sectionRefs }) => {
-  const pkgs = getPackagesForService(unitKey, service.title);
+  const pkgs = getPackagesForService(unitKey, service.id);
   const [ref, inView] = useReveal();
 
   return (
