@@ -11,13 +11,13 @@ const PackageCard = ({ pkg }) => {
   )}`;
 
   return (
-    <div className="relative flex h-[420px] w-full max-w-[380px] flex-col rounded-sm border border-hairline bg-surface p-8 shadow-[0_2px_14px_rgba(0,0,0,.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,.4)]">
-      <h3 className="font-secondary text-xl font-semibold text-ink">
+    <div className="relative flex h-[350px] w-full max-w-[380px] flex-col rounded-sm border border-hairline bg-surface p-8 shadow-[0_2px_14px_rgba(0,0,0,.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(0,0,0,.4)]">
+      <h3 className="font-secondary text-[24px] font-semibold text-ink">
         {pkg.name}
       </h3>
-      <div className="mt-2.5 font-secondary text-[28px] font-semibold text-primary">
+      {/* <div className="mt-2.5 font-secondary text-[28px] font-semibold text-primary">
         {pkg.price}
-      </div>
+      </div> */}
 
       <ul className="mt-5 flex flex-1 flex-col gap-3 overflow-hidden">
         {pkg.features.map((f) => (
